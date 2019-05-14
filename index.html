@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <link rel="stylesheet" href="style.css">
+  
+  <title>○×ゲーム</title>
+</head>
+<body>
+  <div id="app">
+    <modal-panel v-show="result !== ''" v-bind:result="result"></modal-panel>
+    <table>
+      <tr v-for="(state, stateIndex) in states" :key="stateIndex">
+        <td is="mark-area" v-for="(cell, index) in state" v-bind:key="cell.id" v-bind:index="index" v-on:mark="mark(stateIndex, index)" v-bind:cell="cell"></td>
+      </tr>
+    </table>
+    <p v-show="result === ''">現在、{{ marker }}の番です。</p>
+  </div>
+  <input type="button" value="ゲームのリセット" onclick="location.reload()">
+</body>
+<script src="main.js"></script>
+</html>
